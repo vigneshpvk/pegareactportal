@@ -9,6 +9,7 @@ import AddchartIcon from "@mui/icons-material/Addchart";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { useState } from "react";
 import { ColorModeContext, useMode, tokens } from "../../themes";
+import { Link } from "react-router-dom";
 import "./global.css";
 
 const MySideBar = () => {
@@ -65,13 +66,25 @@ const MySideBar = () => {
             </SubMenu>
           </Box>
           <Box>
-            <MenuItem icon={<DashboardCustomizeIcon />}> Dashboard </MenuItem>
+            <MenuItem
+              icon={<DashboardCustomizeIcon />}
+              component={<Link to="/" />}
+            >
+              Dashboard
+            </MenuItem>
           </Box>
           <Box>
-            <MenuItem icon={<AssignmentIcon />}> My Work </MenuItem>
+            <MenuItem
+              icon={<AssignmentIcon />}
+              component={<Link to="/mywork" />}
+            >
+              My Work
+            </MenuItem>
           </Box>
           <Box flexGrow="1">
-            <MenuItem icon={<AddchartIcon />}> Report </MenuItem>
+            <MenuItem icon={<AddchartIcon />} component={<Link to="/report" />}>
+              Report{" "}
+            </MenuItem>
           </Box>
           <Box>
             <MenuItem icon={<LogoutIcon />}> Log out </MenuItem>

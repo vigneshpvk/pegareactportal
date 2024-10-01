@@ -14,6 +14,7 @@ import {
 } from "@mui/material";
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Profile = () => {
   const [openSwitchApps, setOpenSwitchApps] = useState(true);
@@ -45,7 +46,7 @@ const Profile = () => {
         }}
       >
         <List>
-          <ListItemButton>
+          <ListItemButton component={Link} to="/profile">
             <ListItemIcon>
               <PermContactCalendarIcon />
             </ListItemIcon>
