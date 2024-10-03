@@ -7,6 +7,7 @@ import Routers from "./components/global/Routers";
 import { BrowserRouter } from "react-router-dom";
 
 import Dashboard from "./pages/Dashboard";
+import { useState } from "react";
 
 function App() {
   const [theme, colorMode] = useMode();

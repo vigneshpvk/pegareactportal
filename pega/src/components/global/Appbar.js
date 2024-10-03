@@ -54,7 +54,7 @@ const Appbar = () => {
       </Box>
 
       {/* RIGHT SIDE ICONS */}
-      <Box mr={5} mt={1} backgroundColor={colors.primary[400]}>
+      <Box mt={1} backgroundColor={colors.primary[400]}>
         <IconButton onClick={colorMode.toggleColorMode} size="medium">
           {theme.palette.mode === "dark" ? (
             <Brightness4Icon fontSize="medium" />
