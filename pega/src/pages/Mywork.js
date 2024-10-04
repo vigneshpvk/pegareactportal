@@ -6,11 +6,13 @@ import Tabs from "@mui/material/Tabs";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
 import { tokens } from "../themes";
 import { useTheme } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import { mockDataTeam } from "../data/mockData";
+import axios from "axios";
 import "./pages.css";
+import { pegaapi, getAccessToken } from "../connectivity/api";
 
 const Mywork = () => {
   const theme = useTheme();
@@ -21,6 +23,55 @@ const Mywork = () => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  // trigger api
+
+  const getworklist = async () => {
+    const url = "/data_views/D_pyMyWorkList";
+    // const url = "/casetypes";
+    const payload = JSON.stringify({
+      dataViewParameters: {},
+      includeTotalCount: true,
+      paging: {
+        pageNumber: 1,
+        pageSize: 41,
+      },
+      query: {
+        select: [
+          {
+            field: "pxRefObjectInsName",
+          },
+          {
+            field: "pxTaskLabel",
+          },
+          {
+            field: "pyLabel",
+          },
+          {
+            field: "pyAssignmentStatus",
+          },
+          {
+            field: "pxDeadlineTime",
+          },
+          {
+            field: "pxUrgencyAssign",
+          },
+        ],
+      },
+    });
+
+    try {
+      const response = await pegaapi.post(url, payload);
+      console.log(response.data);
+    } catch (error) {
+      console.error("there is error while calling worklist api");
+    }
+  };
+
+  //call api when page loads
+  useEffect(() => {
+    getworklist();
+  }, []);
 
   // Defining columns
 
